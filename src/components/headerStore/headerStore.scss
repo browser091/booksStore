@@ -1,0 +1,24 @@
+.header-store {
+    padding: 10px;
+    width: 100%;
+    background-color: gold;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 10;
+    max-height: 105px;
+    box-shadow: 0 2px 18px 0 rgb(184, 141, 1);
+
+    h1 {
+        padding-left: 30px;
+        font-size: 3vw;
+        font-family: 'Monoton', cursive;
+        transition: all 0.5s;
+    }
+
+}
+
+.header-store h1:hover {
+    font-size: 3.1vw;
+
+}

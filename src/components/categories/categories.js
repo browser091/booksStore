@@ -1,38 +1,39 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router'
-import {compose} from 'redux'
-import {Link} from 'react-router-dom'
-import classNames from 'classnames'
-import * as R from 'ramda'
+import React from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
+import { compose } from "redux";
+import { Link } from "react-router-dom";
+import classNames from "classnames";
+import * as R from "ramda";
 
-import {getCategories, getActiveCategoryId} from '../selectors'
+import { getCategories, getActiveCategoryId } from "../selectors";
+import "./categories.scss";
 
-const Categories = ({categories, activeCategoryId}) => {
+const Categories = ({ categories, activeCategoryId }) => {
   const renderCategory = (category, index) => {
-    const getActiveState = R.propEq('id', activeCategoryId)
+    const getActiveState = R.propEq("id", activeCategoryId);
     const linkClass = classNames({
-      'list-group-item': true,
+      "list-group-item": true,
       active: getActiveState(category),
-    })
+    });
     return (
       <Link to={`/categories/${category.id}`} className={linkClass} key={index}>
         {category.name}
       </Link>
-    )
-  }
+    );
+  };
 
   const renderAllCategory = () => {
     const linkClass = classNames({
-      'list-group-item': true,
+      "list-group-item": true,
       active: R.isNil(activeCategoryId),
-    })
+    });
     return (
       <Link to="/" className={linkClass}>
         Все книги
       </Link>
-    )
-  }
+    );
+  };
 
   return (
     <div className="well">
@@ -42,12 +43,12 @@ const Categories = ({categories, activeCategoryId}) => {
         {categories.map((category, index) => renderCategory(category, index))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state, ownProps) => ({
   categories: getCategories(state),
   activeCategoryId: getActiveCategoryId(ownProps),
-})
+});
 
-export default compose(withRouter, connect(mapStateToProps, null))(Categories)
+export default compose(withRouter, connect(mapStateToProps, null))(Categories);

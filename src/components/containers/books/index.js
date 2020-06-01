@@ -1,26 +1,27 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import * as R from 'ramda'
-import {Link} from 'react-router-dom'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as R from "ramda";
+import { Link } from "react-router-dom";
 
 import {
   fetchBooks,
   loadMoreBooks,
   addBookToCart,
   fetchCategories,
-} from '../../actions/index'
-import {getBooks} from '../../selectors'
-import Layout from '../layout/index'
+} from "../../actions/index";
+import { getBooks } from "../../selectors";
+import Layout from "../layout/index";
+import "./books.scss";
 
 class Books extends Component {
   componentDidMount() {
-    this.props.fetchBooks()
-    this.props.fetchCategories()
+    this.props.fetchBooks();
+    this.props.fetchCategories();
   }
 
   renderBook(book, index) {
-    const {addBookToCart} = this.props
-    const shortDescription = `${R.take(60, book.description)}...`
+    const { addBookToCart } = this.props;
+    const shortDescription = `${R.take(60, book.description)}...`;
     return (
       <div className="col-sm-4 col-lg-4 col-md-4 book-list" key={index}>
         <div className="thumbnail">
@@ -30,7 +31,7 @@ class Books extends Component {
               <Link to={`/books/${book.id}`}>{book.name}</Link>
             </h5>
             <h5 className="pull-right">
-              {book.price.toFixed(2).toString().replace('.', ',')} руб
+              {book.price.toFixed(2).toString().replace(".", ",")} руб
             </h5>
             <p>{shortDescription}</p>
             <p className="itemButton">
@@ -47,11 +48,11 @@ class Books extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   render() {
-    const {books, loadMoreBooks} = this.props
+    const { books, loadMoreBooks } = this.props;
 
     return (
       <Layout>
@@ -69,19 +70,19 @@ class Books extends Component {
           </div>
         </div>
       </Layout>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state, ownProps, loading) => ({
   books: getBooks(state, ownProps, loading),
-})
+});
 
 const mapDispatchToProps = {
   fetchBooks,
   loadMoreBooks,
   addBookToCart,
   fetchCategories,
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Books)
+export default connect(mapStateToProps, mapDispatchToProps)(Books);

@@ -1,13 +1,14 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import * as R from 'ramda'
-import {Link} from 'react-router-dom'
+import React from "react";
+import { connect } from "react-redux";
+import * as R from "ramda";
+import { Link } from "react-router-dom";
 
-import {getCartBooksWithCount, getTotalCartPrice} from '../../selectors'
-import {removeBookFromCart, clearCart} from '../../actions'
+import { getCartBooksWithCount, getTotalCartPrice } from "../../selectors";
+import { removeBookFromCart, clearCart } from "../../actions";
+import "./cart.scss";
 
-const Cart = ({books, totalPrice, removeBookFromCart, clearCart}) => {
-  const isCartEmpty = R.isEmpty(books)
+const Cart = ({ books, totalPrice, removeBookFromCart, clearCart }) => {
+  const isCartEmpty = R.isEmpty(books);
   const renderContent = () => {
     return (
       <div>
@@ -27,14 +28,16 @@ const Cart = ({books, totalPrice, removeBookFromCart, clearCart}) => {
                   </td>
                   <td>{book.name}</td>
                   <td>
-                    {book.price.toFixed(2).toString().replace('.', ',')} руб
+                    {book.price.toFixed(2).toString().replace(".", ",")} руб
                   </td>
                   <td>{book.count}</td>
                   <td>
-                    <span
+                    <button
                       onClick={() => removeBookFromCart(book.id)}
-                      className="delete-cart"
-                    ></span>
+                      className="btn btn-danger"
+                    >
+                      <i className="far fa-trash-alt"></i>
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -45,52 +48,53 @@ const Cart = ({books, totalPrice, removeBookFromCart, clearCart}) => {
           <div className="row">
             <div className="pull-right total-user-checkout">
               <b>Итоговая сумма: </b>
-              {totalPrice.toFixed(2).toString().replace('.', ',')} руб
+              {totalPrice.toFixed(2).toString().replace(".", ",")} руб
             </div>
           </div>
         )}
       </div>
-    )
-  }
+    );
+  };
   const renderSidebar = () => (
     <div>
-      <Link to="/" className="btn btn-info">
-        <span className="glyphicon glyphicon-info-sign"></span>
+      <Link to="/" className="btn btn-outline-info btn-lg btn-block">
         <span>Продолжить покупки</span>
       </Link>
       {R.not(isCartEmpty) && (
-        <div>
-          <button onClick={clearCart} className="btn btn-danger">
-            <span className="glyphicon glyphicon-trash"></span>
+        <div className="clear-all-button">
+          <button
+            onClick={clearCart}
+            className="btn btn-outline-danger btn-lg btn-block"
+          >
             Очистить корзину
           </button>
         </div>
       )}
     </div>
-  )
+  );
 
   return (
     <div className="view-container">
       <div className="container">
         <div className="row">
-          <div className="col-md-9">{renderContent()}</div>
-          <div className="col-md-3">{renderSidebar()}</div>
+          <div className="col-md-10">{renderContent()}</div>
+          <div className="col-md-">{renderSidebar()}</div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state) => {
   return {
     books: getCartBooksWithCount(state),
     totalPrice: getTotalCartPrice(state),
-  }
-}
+  };
+};
 
 const mapDispatchToProps = {
   removeBookFromCart,
   clearCart,
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
