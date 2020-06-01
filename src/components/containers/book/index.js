@@ -47,9 +47,9 @@ class Book extends Component {
           <div className="col-md-6">{this.renderFields()}</div>
         </div>
         <div className="caption-full">
-          <h4 className="pull-right">
+          {/* <h4 className="pull-right">
             {book.price.toFixed(2).toString().replace(".", ",")} руб
-          </h4>
+          </h4> */}
           <h4>{book.name}</h4>
           <p>{book.description}</p>
         </div>
@@ -72,7 +72,7 @@ class Book extends Component {
         </Link>
         <button
           type="button"
-          className="btn btn-success btn-block"
+          className="btn btn-warning btn-block"
           onClick={() => addBookToCart(book.id)}
         >
           Добавить в корзину
