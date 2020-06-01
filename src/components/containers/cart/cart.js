@@ -50,6 +50,7 @@ const Cart = ({ books, totalPrice, removeBookFromCart, clearCart }) => {
               <b>Итоговая сумма: </b>
               {totalPrice.toFixed(2).toString().replace(".", ",")} руб
             </div>
+            <button className="btn btn-outline-dark">оформить заказ</button>
           </div>
         )}
       </div>

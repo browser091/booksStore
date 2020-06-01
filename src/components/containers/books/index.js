@@ -61,10 +61,7 @@ class Books extends Component {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <button
-              className="pull-right btn btn-light"
-              onClick={loadMoreBooks}
-            >
+            <button className="btn btn-outline-dark" onClick={loadMoreBooks}>
               Показать еще
             </button>
           </div>
