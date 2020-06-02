@@ -1,29 +1,30 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import {searchBook} from '../actions'
+import { searchBook } from "../actions";
 
 class Search extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      value: '',
-    }
+      value: "",
+    };
 
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     this.setState({
-      value: event.target.value,
-    })
+      value: event.target.value.toLowerCase(),
+    });
+    console.log(this.state.value);
   }
 
   handleSubmit(event) {
-    event.preventDefault()
-    this.props.searchBook(this.state.value)
+    event.preventDefault();
+    this.props.searchBook(this.state.value);
   }
 
   render() {
@@ -46,12 +47,12 @@ class Search extends Component {
           </span>
         </div>
       </div>
-    )
+    );
   }
 }
 
 const mapDispatchToProps = {
   searchBook,
-}
+};
 
-export default connect(null, mapDispatchToProps)(Search)
+export default connect(null, mapDispatchToProps)(Search);
