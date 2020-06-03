@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as R from "ramda";
 import { Link } from "react-router-dom";
 
+import PaymentForm from "../creditCards/creditCards";
 import { getCartBooksWithCount, getTotalCartPrice } from "../../selectors";
 import { removeBookFromCart, clearCart } from "../../actions";
 import "./cart.scss";
@@ -50,7 +51,9 @@ const Cart = ({ books, totalPrice, removeBookFromCart, clearCart }) => {
               <b>Итоговая сумма: </b>
               {totalPrice.toFixed(2).toString().replace(".", ",")} руб
             </div>
-            <button className="btn btn-outline-dark">оформить заказ</button>
+            <Link to="/credit_card" className="btn btn-outline-dark">
+              Oформить заказ
+            </Link>
           </div>
         )}
       </div>

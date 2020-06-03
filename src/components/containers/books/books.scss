@@ -1,14 +1,30 @@
 .img-thumbnail {
-  max-height: 400px;
+  max-height: 24vw;
   object-fit: contain;
 }
 
-// .thumbnail {
-//   height: 650px;
-// }
 .btn-right {
   display: grid;
 }
+
 .col-md-12 {
+  display: grid;
+}
+
+.book-name {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+}
+
+.price-name {
+  text-align: center;
+  font-size: 34px;
+  text-shadow: orange 0 0 16px;
+}
+
+.itemButton {
   display: grid;
 }

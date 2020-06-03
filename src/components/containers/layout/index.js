@@ -1,18 +1,11 @@
 import React from "react";
 
+import Prew from "../prew/prew";
 import Sidebar from "../../sidebar/sidebar";
-import "./layout.scss";
 
 const Layout = ({ children }) => (
   <div className="view-container">
-    <div className="prew-store">
-      <img className="prew-store img" src="/images/prew.png" alt="prew img" />
-      <span className="header-prew">
-        <h2>ДИВАН,</h2>
-        <h2> ХОРОШАЯ КНИГА,</h2>
-        <h2>И ТЫ.</h2>
-      </span>
-    </div>
+    <Prew />
     <div className="container">
       <div className="row">
         <div className="col-md-3">

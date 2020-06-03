@@ -6,11 +6,13 @@ import Book from "./containers/book/index";
 import Cart from "./containers/cart/cart";
 import HeaderBook from "./headerStore/index";
 import FooterStore from "./footerStore";
+import PaymentForm from "./containers/creditCards/creditCards";
 
 export default (
   <main>
     <HeaderBook />
     <Switch>
+      <Route path="/credit_card" component={PaymentForm} exact />
       <Route path="/" component={Books} exact />
       <Route path="/cart" component={Cart} />
       <Route path="/categories/:id" component={Books} />

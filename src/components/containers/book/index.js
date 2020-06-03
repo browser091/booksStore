@@ -47,9 +47,6 @@ class Book extends Component {
           <div className="col-md-6">{this.renderFields()}</div>
         </div>
         <div className="caption-full">
-          {/* <h4 className="pull-right">
-            {book.price.toFixed(2).toString().replace(".", ",")} руб
-          </h4> */}
           <h4>{book.name}</h4>
           <p>{book.description}</p>
         </div>

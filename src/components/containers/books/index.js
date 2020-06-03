@@ -27,23 +27,23 @@ class Books extends Component {
         <div className="thumbnail">
           <img className="img-thumbnail" src={book.image} alt={book.name} />
           <div className="caption">
-            <h5>
+            <h5 className="book-name">
               <Link to={`/books/${book.id}`}>{book.name}</Link>
             </h5>
-            <h5 className="pull-right">
+            <h5 className="price-name">
               {book.price.toFixed(2).toString().replace(".", ",")} руб
             </h5>
             <p>{shortDescription}</p>
             <p className="itemButton">
+              <Link className="btn btn-light" to={`/books/${book.id}`}>
+                О книге
+              </Link>
               <button
                 className="btn btn-warning"
                 onClick={() => addBookToCart(book.id)}
               >
                 В корзину
               </button>
-              <Link className="btn btn-light" to={`/books/${book.id}`}>
-                О книге
-              </Link>
             </p>
           </div>
         </div>
